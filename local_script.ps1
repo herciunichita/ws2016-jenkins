@@ -1,3 +1,6 @@
+$virtISOPath =
+$targetPath = 
+$ISO = 
 try {
     If (Get-Module WinImageBuilder) {
         Remove-Module WinImageBuilder
@@ -8,7 +11,6 @@ try {
     $driveLetter = (Mount-DiskImage $ISO -PassThru | Get-Volume).DriveLetter 
     $wimFilePath = "${driveLetter}:\sources\install.wim"
 
-    $virtISOPath = 
     # Check what images are supported in this Windows ISO
     $images = Get-WimFileImagesInfo -WimFilePath $wimFilePath
     $image = $images[1]
