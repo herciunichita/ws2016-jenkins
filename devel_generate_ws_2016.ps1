@@ -3,7 +3,7 @@
 # Description: Script for gathering and executing the jenkins job
 # for generating latest windows images.
 
-$baseDir = "C:\generate_windows_images"
+$baseDir = "C:\cinder_windows_images"
 $buildArea = Join-Path -Path "$baseDir" -ChildPath "build_area"
 $logDir = Join-Path -Path "$buildArea" -ChildPath "logs"
 $woitDir = Join-Path -Path "$buildArea" -ChildPath "devel-woit-$env:BUILD_NUMBER"
@@ -44,7 +44,7 @@ try {
     if (Test-Path "$woitDir") {
         Remove-Item -Recurse -Force "$woitDir"
     }
-    git clone -b devel_jenkins https://github.com/costingalan/windows-openstack-imaging-tools "devel-woit-$env:BUILD_NUMBER" 
+    git clone -b devel_jenkins https://github.com/herciunichita/windows-openstack-imaging-tools "devel-woit-$env:BUILD_NUMBER" 
     pushd "$woitDir"
     git checkout devel_jenkins
     git submodule update --init #for the curtin and update modules
