@@ -44,9 +44,9 @@ try {
     if (Test-Path "$woitDir") {
         Remove-Item -Recurse -Force "$woitDir"
     }
-    git clone -b devel_jenkins https://github.com/herciunichita/windows-openstack-imaging-tools "devel-woit-$env:BUILD_NUMBER" 
+    git clone -b devel https://github.com/herciunichita/windows-openstack-imaging-tools "devel-woit-$env:BUILD_NUMBER" 
     pushd "$woitDir"
-    git checkout devel_jenkins
+    git checkout devel
     git submodule update --init #for the curtin and update modules
     popd
     ls
@@ -54,7 +54,7 @@ try {
         Write-Host "Removing $scriptDir"
         Remove-Item -Force -Recurse "$scriptDir"
     }
-    git clone https://github.com/costingalan/ws2016-jenkins "devel-ws2016-jenkins-$env:BUILD_NUMBER"
+    git clone https://github.com/herciunichita/ws2016-jenkins "devel-ws2016-jenkins-$env:BUILD_NUMBER"
     pushd "$scriptDir"
     .\devel_generate_script.ps1 | Tee-Object -FilePath "$logPath"
     popd
