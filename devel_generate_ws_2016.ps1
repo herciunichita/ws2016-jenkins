@@ -44,9 +44,9 @@ try {
     if (Test-Path "$woitDir") {
         Remove-Item -Recurse -Force "$woitDir"
     }
-    git clone -b devel https://github.com/herciunichita/windows-openstack-imaging-tools "devel-woit-$env:BUILD_NUMBER" 
+    git clone -b tst https://github.com/herciunichita/windows-openstack-imaging-tools "devel-woit-$env:BUILD_NUMBER" 
     pushd "$woitDir"
-    git checkout devel
+    git checkout tst
     git submodule update --init #for the curtin and update modules
     popd
     ls
